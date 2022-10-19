@@ -10,7 +10,7 @@ public class Stack<T> implements StackInterface<T> {
 
     public void push (T newEntry){
         MyNode<T> newNode = new MyNode<>(newEntry);
-        newNode.setNext(topNode);
+        newNode.setNextNode(topNode);
         topNode = newNode;
 
     }
@@ -18,7 +18,7 @@ public class Stack<T> implements StackInterface<T> {
 
     public T pop(){
         T dataToReturn = peek();
-        topNode = topNode.getNext();
+        topNode = topNode.getNextNode();
         return dataToReturn;
     }
 

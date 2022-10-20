@@ -9,23 +9,23 @@ public class PQueue<T extends Comparable<T>> implements PQueueInterface<T> {
         Integer[] randomValues = new Integer[10];
 
 
-//        for(int i = 0; i< randomValues.length; i++){
-//            randomValues[i] = random.nextInt(1000);
-//            //pQueue.enqueue(randomValues[i]);
-//        }
-        randomValues[0] = 1;
-        randomValues[1] = 2;
-        randomValues[2] = 3;
-        randomValues[3] = 5;
-        randomValues[4] = 4;
-        randomValues[5] = 6;
-        randomValues[6] = 7;
-        randomValues[7] = 8;
-        randomValues[8] = 9;
-
-        for(int i =0; i < randomValues.length -1; i++){
+        for(int i = 0; i< randomValues.length; i++){
+            randomValues[i] = random.nextInt(1000);
             pQueue.enqueue(randomValues[i]);
         }
+//        randomValues[0] = 1;
+//        randomValues[1] = 2;
+//        randomValues[2] = 3;
+//        randomValues[3] = 5;
+//        randomValues[4] = 4;
+//        randomValues[5] = 6;
+//        randomValues[6] = 7;
+//        randomValues[7] = 8;
+//        randomValues[8] = 9;
+
+//        for(int i =0; i < randomValues.length -1; i++){
+//            pQueue.enqueue(randomValues[i]);
+//        }
 
 
         System.out.println("Random array is " + Arrays.toString(randomValues));
@@ -59,13 +59,13 @@ public class PQueue<T extends Comparable<T>> implements PQueueInterface<T> {
         }
         else{
             MyNode<T> currentNode = front;
-            while(currentNode.getNextNode() != null && currentNode.getNextNode().getData().compareTo(newNode.getData()) == 1){
-                //currentNode.setData(currentNode.getNextNode().getData());
-                newNode.setNextNode(currentNode.getNextNode());
-                currentNode.setNextNode(newNode);
-
+            while(currentNode.getNextNode() != null &&
+                    //Priority of Current Node.Next is less than New node
+                    currentNode.getNextNode().getData().compareTo(newNode.getData()) == 1){
+                currentNode = currentNode.getNextNode();
             }
-
+            newNode.setNextNode(currentNode.getNextNode());
+            currentNode.setNextNode(newNode);
         }
 
     }
